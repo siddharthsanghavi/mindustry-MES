@@ -11,10 +11,12 @@ import {
   getBelts,
   getBuilding,
   getBuildings,
+  getDefaultGameSettings,
   getDefaultSettings,
   getItem,
   getItems,
 } from "@/utils";
+import { ObjectiveContext } from "@/context/ObjectiveContext";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -50,6 +52,7 @@ export default function Settings() {
           <LanguageSettings />
           <DisplayRateSettings />
           <ModeSettings />
+          <PowerSettings />
         </div>
       </Details>
       <Details
@@ -330,6 +333,23 @@ export default function Settings() {
   );
 }
 
+function PowerSettings() {
+  const { t } = useTranslation();
+  const [settings, setSettings] = useContext(SettingsContext).settingsState;
+  const options = { on: "On", off: "Off" };
+
+  return (
+    <SettingsDropdown
+      label={t("Power generation")}
+      options={options}
+      selected={settings.includePower ? "on" : "off"}
+      onSelect={(key) =>
+        setSettings((prev) => ({ ...prev, includePower: key === "on" }))
+      }
+    />
+  );
+}
+
 function DisplayRateSettings() {
   const { t } = useTranslation();
   const [settings, setSettings] = useContext(SettingsContext).settingsState;
@@ -367,15 +387,38 @@ function LanguageSettings() {
 
 function ModeSettings() {
   const { t } = useTranslation();
-  const [settings, setSettings] = useContext(SettingsContext).settingsState;
+  const { settingsState, ignoredItemsState } = useContext(SettingsContext);
+  const [settings, setSettings] = settingsState;
+  const [, setIgnoredItems] = ignoredItemsState;
+  const [objective, setObjective] = useContext(ObjectiveContext).objectiveState;
   const modes = { serpulo: "Serpulo", erekir: "Erekir" };
+
+  // Item, building and belt IDs differ per planet, so per-item choices and
+  // the current objective must be reset when switching planets.
+  const switchMode = (key: string) => {
+    if (key === settings.mode) return;
+    const gameSettings = getDefaultGameSettings(key);
+    if (key === "serpulo") {
+      gameSettings.items = {
+        ...gameSettings.items,
+        coal: "coal-centrifuge",
+        silicon: "silicon-crucible",
+      };
+    }
+    setSettings((prev) => ({ ...prev, mode: key, gameSettings }));
+    setIgnoredItems([]);
+    const items = getItems(key);
+    if (!items.some((item) => item.getId() === objective) && items[0]) {
+      setObjective(items[0].getId());
+    }
+  };
 
   return (
     <SettingsDropdown
       label={t("Modes")}
       options={modes}
       selected={settings.mode}
-      onSelect={(key) => setSettings((prev) => ({ ...prev, mode: key }))}
+      onSelect={switchMode}
     />
   );
 }

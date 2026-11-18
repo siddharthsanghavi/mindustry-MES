@@ -3,6 +3,8 @@ export type Settings = {
   mode: string;
   displayRate: "second" | "minute" | "hour";
   lang: string;
+  /** Add the generators needed to power every building to the chain. */
+  includePower: boolean;
   gameSettings: GameSettings;
 };
 

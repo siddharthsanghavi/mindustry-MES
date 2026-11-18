@@ -602,6 +602,26 @@
         "col": 9
       },
       "producedBy": ["tetrative-reconstructor"]
+    },
+    {
+      "id": "power",
+      "name": "Power",
+      "category": "power",
+      "image": {
+        "row": 1,
+        "col": 6
+      },
+      "producedBy": [
+        "combustion-generator",
+        "steam-generator",
+        "differential-generator",
+        "rtg-generator",
+        "solar-panel",
+        "solar-panel-large",
+        "thermal-generator",
+        "thorium-reactor",
+        "impact-reactor"
+      ]
     }
   ],
   "belts": [
@@ -794,19 +814,19 @@
         "affinities": [
           {
             "id": "dark-sand-floor",
-            "efficiency": 1.5
+            "efficiency": 0.5
           },
           {
             "id": "salt-floor",
-            "efficiency": 0.3
+            "efficiency": -0.7
           },
           {
             "id": "sand-floor",
-            "efficiency": 0.7
+            "efficiency": -0.3
           },
           {
             "id": "shale-floor",
-            "efficiency": 1.6
+            "efficiency": 1
           }
         ]
       }
@@ -915,7 +935,7 @@
           },
           {
             "id": "magma-rock",
-            "efficiency": 1.01
+            "efficiency": 1
           }
         ]
       }
@@ -971,6 +991,30 @@
       "image": {
         "row": 8,
         "col": 10
+      },
+      "optionalEnhancements": {
+        "affinities": [
+          {
+            "id": "other",
+            "efficiency": 0
+          },
+          {
+            "id": "moss-floor",
+            "efficiency": 0.6
+          },
+          {
+            "id": "spore-moss-floor",
+            "efficiency": 1.2
+          },
+          {
+            "id": "tainted-water-floor",
+            "efficiency": 0.6
+          },
+          {
+            "id": "dark-sand-tainted-water-floor",
+            "efficiency": 0.4
+          }
+        ]
       }
     },
     {
@@ -1097,6 +1141,91 @@
       "image": {
         "row": 9,
         "col": 10
+      }
+    },
+    {
+      "id": "combustion-generator",
+      "name": "Combustion generator",
+      "image": {
+        "row": 1,
+        "col": 7
+      }
+    },
+    {
+      "id": "steam-generator",
+      "name": "Steam generator",
+      "image": {
+        "row": 1,
+        "col": 8
+      }
+    },
+    {
+      "id": "differential-generator",
+      "name": "Differential generator",
+      "image": {
+        "row": 1,
+        "col": 9
+      }
+    },
+    {
+      "id": "rtg-generator",
+      "name": "RTG generator",
+      "image": {
+        "row": 1,
+        "col": 10
+      }
+    },
+    {
+      "id": "solar-panel",
+      "name": "Solar panel",
+      "image": {
+        "row": 1,
+        "col": 11
+      }
+    },
+    {
+      "id": "solar-panel-large",
+      "name": "Large solar panel",
+      "image": {
+        "row": 1,
+        "col": 12
+      }
+    },
+    {
+      "id": "thermal-generator",
+      "name": "Thermal generator",
+      "image": {
+        "row": 2,
+        "col": 10
+      },
+      "optionalEnhancements": {
+        "affinities": [
+          {
+            "id": "hot-rock",
+            "efficiency": 1
+          },
+          {
+            "id": "magma-rock",
+            "efficiency": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "thorium-reactor",
+      "name": "Thorium reactor",
+      "image": {
+        "row": 1,
+        "col": 13
+      }
+    },
+    {
+      "id": "impact-reactor",
+      "name": "Impact reactor",
+      "power": 1500,
+      "image": {
+        "row": 1,
+        "col": 14
       }
     }
   ],
@@ -1653,15 +1782,15 @@
         },
         {
           "id": "mechanical-pump",
-          "output": [{ "id": "oil", "perSec": 7 }]
+          "output": [{ "id": "cryofluid", "perSec": 3.5 }]
         },
         {
           "id": "rotary-pump",
-          "output": [{ "id": "oil", "perSec": 48 }]
+          "output": [{ "id": "cryofluid", "perSec": 24 }]
         },
         {
           "id": "impulse-pump",
-          "output": [{ "id": "oil", "perSec": 118.8 }]
+          "output": [{ "id": "cryofluid", "perSec": 59.4 }]
         }
       ]
     },
@@ -2186,6 +2315,144 @@
             { "id": "cryofluid", "perSec": 180 }
           ],
           "output": [{ "id": "navanax", "perSec": "1/240" }]
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "buildings": [
+        {
+          "id": "combustion-generator",
+          "input": [
+            {
+              "id": "coal",
+              "perSec": 0.5
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 60
+            }
+          ]
+        },
+        {
+          "id": "steam-generator",
+          "input": [
+            {
+              "id": "coal",
+              "perSec": "2/3"
+            },
+            {
+              "id": "water",
+              "perSec": 6
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 330
+            }
+          ]
+        },
+        {
+          "id": "differential-generator",
+          "input": [
+            {
+              "id": "pyratite",
+              "perSec": "3/11"
+            },
+            {
+              "id": "cryofluid",
+              "perSec": 6
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 1080
+            }
+          ]
+        },
+        {
+          "id": "rtg-generator",
+          "input": [
+            {
+              "id": "thorium",
+              "perSec": "1/14"
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 270
+            }
+          ]
+        },
+        {
+          "id": "solar-panel",
+          "output": [
+            {
+              "id": "power",
+              "perSec": 7.2
+            }
+          ]
+        },
+        {
+          "id": "solar-panel-large",
+          "output": [
+            {
+              "id": "power",
+              "perSec": 96
+            }
+          ]
+        },
+        {
+          "id": "thermal-generator",
+          "output": [
+            {
+              "id": "power",
+              "perSec": 108
+            }
+          ]
+        },
+        {
+          "id": "thorium-reactor",
+          "input": [
+            {
+              "id": "thorium",
+              "perSec": "1/6"
+            },
+            {
+              "id": "cryofluid",
+              "perSec": 2.4
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 900
+            }
+          ]
+        },
+        {
+          "id": "impact-reactor",
+          "input": [
+            {
+              "id": "blast-compound",
+              "perSec": "3/7"
+            },
+            {
+              "id": "cryofluid",
+              "perSec": 15
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 7800
+            }
+          ]
         }
       ]
     }
