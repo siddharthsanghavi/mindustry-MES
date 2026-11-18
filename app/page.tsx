@@ -5,7 +5,12 @@ import Table from "@/components/Table";
 import { ObjectiveContext } from "@/context/ObjectiveContext";
 import { SettingsContext } from "@/context/SettingsContext";
 import { getBuildingForItem, getItem, getRecipe } from "@/utils";
-import { calculateBuildings } from "@/utils/calculate";
+import {
+  calculateBuildings,
+  CalcPath,
+  addPowerGeneration,
+  shouldStopAtCycle,
+} from "@/utils/calculate";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import type { Settings, CalculationResult } from "@/types";
 import Visualize from "./visualize/page";
@@ -18,14 +23,14 @@ export default function Home() {
   const [objective] = useContext(ObjectiveContext).objectiveState;
   const [productsPerSec] = useContext(ObjectiveContext).productsPerSecState;
   const [result, setResult] = useState(
-    calculate(objective, productsPerSec, settings, ignoredItems)
+    calculateWithPower(objective, productsPerSec, settings, ignoredItems)
   );
   const [windowWidth, setWindowWidth] = useState(0);
   const divRef = useRef<HTMLDivElement>(null);
   const visualizeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setResult(calculate(objective, productsPerSec, settings, ignoredItems));
+    setResult(calculateWithPower(objective, productsPerSec, settings, ignoredItems));
   }, [objective, productsPerSec, settings, ignoredItems, mode]);
 
   useEffect(() => {
@@ -90,12 +95,29 @@ export default function Home() {
   );
 }
 
+function calculateWithPower(
+  objective: string,
+  productsPerSec: number,
+  settings: Settings,
+  ignoredItems: string[]
+): CalculationResult {
+  const result = calculate(objective, productsPerSec, settings, ignoredItems);
+  addPowerGeneration(
+    settings,
+    () =>
+      Object.values(result).reduce((sum, row) => sum + (row.power ?? 0), 0),
+    (amount) => calculate("power", amount, settings, ignoredItems, result)
+  );
+  return result;
+}
+
 function calculate(
   objective: string,
   productsPerSec: number,
   settings: Settings,
   ignoredItems: string[],
-  result: CalculationResult = {}
+  result: CalculationResult = {},
+  path: CalcPath = []
 ): CalculationResult {
   const item = getItem(objective, settings.mode);
   if (!item) return result;
@@ -123,10 +145,16 @@ function calculate(
     };
   }
 
-  if (ignoredItems.includes(objective)) return result;
+  // Follow recipe loops until they converge (see shouldStopAtCycle).
+  if (
+    ignoredItems.includes(objective) ||
+    shouldStopAtCycle(path, objective, productsPerSec)
+  )
+    return result;
+  const nextPath = [...path, { id: objective, amount: productsPerSec }];
 
   recipe.getInput(building.getId())?.forEach(({ id, perSec }) => {
-    calculate(id, perSec * numOfBuildings, settings, ignoredItems, result);
+    calculate(id, perSec * numOfBuildings, settings, ignoredItems, result, nextPath);
   });
 
   const selectedBoostId =
@@ -140,7 +168,8 @@ function calculate(
       boost?.perSec * numOfBuildings,
       settings,
       ignoredItems,
-      result
+      result,
+      nextPath
     );
 
   return result;

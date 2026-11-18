@@ -7,6 +7,7 @@ export function getDefaultSettings(): Settings {
     mode: "serpulo",
     displayRate: "second",
     lang: "en",
+    includePower: true,
     gameSettings: getDefaultGameSettings("serpulo"),
   };
 }

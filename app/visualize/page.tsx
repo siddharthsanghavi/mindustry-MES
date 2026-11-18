@@ -7,9 +7,15 @@ import BoxlineFlow from "./boxline/BoxlineFlow";
 import { Settings, VisualizeSettingsType } from "@/types";
 import { ObjectiveContext } from "@/context/ObjectiveContext";
 import { SettingsContext } from "@/context/SettingsContext";
-import { getBuildingForItem, getItem, getRecipe } from "@/utils";
+import { getBuilding, getBuildingForItem, getItem, getRecipe } from "@/utils";
 import Objectives from "@/components/Objectives";
-import { calculateBuildings } from "@/utils/calculate";
+import {
+  calculateBuildings,
+  CalcPath,
+  addPowerGeneration,
+  isPowerEnabled,
+  shouldStopAtCycle,
+} from "@/utils/calculate";
 import { VisualizeEdgeData, VisualizeNodeData } from "./boxline/graphLayout";
 import { ReactFlowProvider } from "@xyflow/react";
 import VisualizeSettings from "@/components/VisualizeSettings";
@@ -77,7 +83,7 @@ export default function Visualize() {
   }, [nodes, edges]);
 
   useEffect(() => {
-    setResult(calculate(objective, productsPerSec, settings));
+    setResult(calculateWithPower(objective, productsPerSec, settings));
   }, [objective, productsPerSec, settings, visualizeSettings.direction]);
 
   useEffect(() => {
@@ -163,6 +169,34 @@ type VisualizeResult = Record<
   }
 >;
 
+function calculateWithPower(
+  objective: string,
+  productsPerSec: number,
+  settings: Settings
+) {
+  const result = calculate(objective, productsPerSec, settings);
+  if (isPowerEnabled(settings)) {
+    // Generators feed one "power grid" node rather than every consumer.
+    addPowerGeneration(
+      settings,
+      () =>
+        Object.values(result.result).reduce(
+          (sum, node) =>
+            sum +
+            (getBuilding(node.building, settings.mode).getPower() ?? 0) *
+              node.numOfBuildings,
+          0
+        ),
+      (amount) => {
+        if (!result.specialNodeLabels.includes("power grid"))
+          result.specialNodeLabels.push("power grid");
+        calculate("power", amount, settings, result, "power grid");
+      }
+    );
+  }
+  return result;
+}
+
 function calculate(
   objective: string,
   productsPerSec: number,
@@ -171,7 +205,8 @@ function calculate(
     result: {},
     specialNodeLabels: ["output"],
   },
-  to: string = "output"
+  to: string = "output",
+  path: CalcPath = []
 ): { result: VisualizeResult; specialNodeLabels: string[] } {
   const item = getItem(objective, settings.mode);
   const building = getBuildingForItem(item.getId(), settings);
@@ -213,8 +248,12 @@ function calculate(
     };
   }
 
+  // Follow recipe loops until they converge (see shouldStopAtCycle).
+  if (shouldStopAtCycle(path, objective, productsPerSec)) return result;
+  const nextPath = [...path, { id: objective, amount: productsPerSec }];
+
   recipe.getInput(building.getId()).forEach(({ id, perSec }) => {
-    calculate(id, perSec * numOfBuildings, settings, result, nodeName);
+    calculate(id, perSec * numOfBuildings, settings, result, nodeName, nextPath);
   });
 
   if (recipe.getOutput(building.getId()).length > 1) {
@@ -247,7 +286,8 @@ function calculate(
       boost?.perSec * numOfBuildings,
       settings,
       result,
-      nodeName
+      nodeName,
+      nextPath
     );
 
   return result;

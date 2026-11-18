@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:static": "cross-env ELECTRON_BUILD=1 next build",
+    "electron": "electron .",
+    "dist:exe": "npm run build:static && electron-builder --win portable"
   },
   "dependencies": {
     "@dagrejs/dagre": "^1.1.5",
@@ -32,9 +35,33 @@
     "@types/pathfinding": "^0.1.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
+    "electron": "^45.3.2",
+    "electron-builder": "^26.18.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "main": "electron/main.js",
+  "build": {
+    "appId": "com.mindustry.mes",
+    "productName": "Mindustry MES",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**",
+      "out/**",
+      "package.json",
+      "!node_modules/**"
+    ],
+    "win": {
+      "target": "portable"
+    },
+    "portable": {
+      "artifactName": "MindustryMES-${version}-portable.exe"
+    },
+    "npmRebuild": false
   }
 }

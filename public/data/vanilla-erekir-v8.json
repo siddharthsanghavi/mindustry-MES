@@ -1,6 +1,61 @@
 {
   "items": [
     {
+      "id": "beryllium",
+      "name": "Beryllium",
+      "category": "item",
+      "image": {
+        "row": 1,
+        "col": 2
+      },
+      "producedBy": [
+        "plasma-bore",
+        "large-plasma-bore",
+        "impact-drill",
+        "eruption-drill"
+      ]
+    },
+    {
+      "id": "tungsten",
+      "name": "Tungsten",
+      "category": "item",
+      "image": {
+        "row": 1,
+        "col": 3
+      },
+      "producedBy": [
+        "large-plasma-bore",
+        "impact-drill",
+        "eruption-drill"
+      ]
+    },
+    {
+      "id": "graphite",
+      "name": "Graphite",
+      "category": "item",
+      "image": {
+        "row": 0,
+        "col": 5
+      },
+      "producedBy": [
+        "plasma-bore",
+        "large-plasma-bore"
+      ]
+    },
+    {
+      "id": "sand",
+      "name": "Sand",
+      "category": "item",
+      "image": {
+        "row": 0,
+        "col": 4
+      },
+      "producedBy": [
+        "cliff-crusher",
+        "large-cliff-crusher"
+      ]
+    },
+    {
       "id": "silicon",
       "name": "Silicon",
       "category": "item",
@@ -8,12 +63,1454 @@
         "row": 0,
         "col": 11
       },
-      "producedBy": []
+      "producedBy": [
+        "silicon-arc-furnace"
+      ]
+    },
+    {
+      "id": "oxide",
+      "name": "Oxide",
+      "category": "item",
+      "image": {
+        "row": 1,
+        "col": 4
+      },
+      "producedBy": [
+        "oxidation-chamber"
+      ]
+    },
+    {
+      "id": "carbide",
+      "name": "Carbide",
+      "category": "item",
+      "image": {
+        "row": 1,
+        "col": 5
+      },
+      "producedBy": [
+        "carbide-crucible"
+      ]
+    },
+    {
+      "id": "thorium",
+      "name": "Thorium",
+      "category": "item",
+      "image": {
+        "row": 0,
+        "col": 10
+      },
+      "producedBy": [
+        "large-plasma-bore",
+        "eruption-drill"
+      ]
+    },
+    {
+      "id": "phase-fabric",
+      "name": "Phase fabric",
+      "category": "item",
+      "image": {
+        "row": 0,
+        "col": 13
+      },
+      "producedBy": [
+        "phase-synthesizer"
+      ]
+    },
+    {
+      "id": "surge-alloy",
+      "name": "Surge alloy",
+      "category": "item",
+      "image": {
+        "row": 0,
+        "col": 14
+      },
+      "producedBy": [
+        "surge-crucible"
+      ]
+    },
+    {
+      "id": "water",
+      "name": "Water",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 0
+      },
+      "producedBy": [
+        "vent-condenser",
+        "reinforced-pump",
+        "turbine-condenser",
+        "pyrolysis-generator"
+      ]
+    },
+    {
+      "id": "slag",
+      "name": "Slag",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 1
+      },
+      "producedBy": [
+        "reinforced-pump"
+      ]
+    },
+    {
+      "id": "arkycite",
+      "name": "Arkycite",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 4
+      },
+      "producedBy": [
+        "reinforced-pump"
+      ]
+    },
+    {
+      "id": "ozone",
+      "name": "Ozone",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 6
+      },
+      "producedBy": [
+        "electrolyzer"
+      ]
+    },
+    {
+      "id": "hydrogen",
+      "name": "Hydrogen",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 7
+      },
+      "producedBy": [
+        "electrolyzer"
+      ]
+    },
+    {
+      "id": "nitrogen",
+      "name": "Nitrogen",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 8
+      },
+      "producedBy": [
+        "atmospheric-concentrator"
+      ]
+    },
+    {
+      "id": "cyanogen",
+      "name": "Cyanogen",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 9
+      },
+      "producedBy": [
+        "cyanogen-synthesizer"
+      ]
+    },
+    {
+      "id": "neoplasm",
+      "name": "Neoplasm",
+      "category": "fluid",
+      "image": {
+        "row": 2,
+        "col": 5
+      },
+      "producedBy": [
+        "neoplasia-reactor"
+      ]
+    },
+    {
+      "id": "heat",
+      "name": "Heat",
+      "category": "heat",
+      "image": {
+        "row": 9,
+        "col": 13
+      },
+      "producedBy": [
+        "electric-heater",
+        "slag-heater",
+        "phase-heater",
+        "oxidation-chamber",
+        "neoplasia-reactor"
+      ]
+    },
+    {
+      "id": "power",
+      "name": "Power",
+      "category": "power",
+      "image": {
+        "row": 1,
+        "col": 6
+      },
+      "producedBy": [
+        "turbine-condenser",
+        "chemical-combustion-chamber",
+        "pyrolysis-generator",
+        "flux-reactor",
+        "neoplasia-reactor"
+      ]
     }
   ],
-  "belts": [],
-  "buildings": [],
+  "belts": [
+    {
+      "id": "duct",
+      "name": "Duct",
+      "speed": 15,
+      "image": {
+        "row": 14,
+        "col": 9
+      },
+      "transportType": "item"
+    },
+    {
+      "id": "surge-conveyor",
+      "name": "Surge conveyor",
+      "speed": 50,
+      "image": {
+        "row": 14,
+        "col": 10
+      },
+      "transportType": "item"
+    },
+    {
+      "id": "reinforced-conduit",
+      "name": "Reinforced conduit",
+      "speed": 640,
+      "image": {
+        "row": 14,
+        "col": 11
+      },
+      "transportType": "fluid"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "plasma-bore",
+      "name": "Plasma bore",
+      "power": 9,
+      "image": {
+        "row": 10,
+        "col": 8
+      },
+      "optionalEnhancements": {
+        "booster": [
+          {
+            "id": "hydrogen",
+            "speed": 2.5,
+            "perSec": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "large-plasma-bore",
+      "name": "Large plasma bore",
+      "power": 48,
+      "image": {
+        "row": 10,
+        "col": 9
+      },
+      "optionalEnhancements": {
+        "booster": [
+          {
+            "id": "nitrogen",
+            "speed": 2.5,
+            "perSec": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "impact-drill",
+      "name": "Impact drill",
+      "power": 160,
+      "image": {
+        "row": 10,
+        "col": 6
+      },
+      "optionalEnhancements": {
+        "booster": [
+          {
+            "id": "ozone",
+            "speed": 1.6,
+            "perSec": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "eruption-drill",
+      "name": "Eruption drill",
+      "power": 360,
+      "image": {
+        "row": 11,
+        "col": 4
+      },
+      "optionalEnhancements": {
+        "booster": [
+          {
+            "id": "cyanogen",
+            "speed": 1.6,
+            "perSec": 0.75
+          }
+        ]
+      }
+    },
+    {
+      "id": "cliff-crusher",
+      "name": "Cliff crusher",
+      "power": 11,
+      "image": {
+        "row": 11,
+        "col": 12
+      },
+      "optionalEnhancements": {
+        "affinities": [
+          {
+            "id": "stone-wall",
+            "efficiency": 0
+          },
+          {
+            "id": "regolith-wall",
+            "efficiency": 0
+          },
+          {
+            "id": "rhyolite-wall",
+            "efficiency": 0
+          },
+          {
+            "id": "dune-wall",
+            "efficiency": 1
+          },
+          {
+            "id": "sand-wall",
+            "efficiency": 1
+          },
+          {
+            "id": "yellow-stone-wall",
+            "efficiency": 0.5
+          },
+          {
+            "id": "red-stone-wall",
+            "efficiency": 0.5
+          },
+          {
+            "id": "beryllic-stone-wall",
+            "efficiency": 0.2
+          },
+          {
+            "id": "carbon-wall",
+            "efficiency": -0.3
+          },
+          {
+            "id": "ferric-stone-wall",
+            "efficiency": -0.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "large-cliff-crusher",
+      "name": "Large cliff crusher",
+      "power": 60,
+      "image": {
+        "row": 11,
+        "col": 13
+      },
+      "optionalEnhancements": {
+        "booster": [
+          {
+            "id": "graphite",
+            "speed": 1.6,
+            "perSec": 0.75
+          }
+        ],
+        "affinities": [
+          {
+            "id": "stone-wall",
+            "efficiency": 0
+          },
+          {
+            "id": "regolith-wall",
+            "efficiency": 0
+          },
+          {
+            "id": "rhyolite-wall",
+            "efficiency": 0
+          },
+          {
+            "id": "dune-wall",
+            "efficiency": 1
+          },
+          {
+            "id": "sand-wall",
+            "efficiency": 1
+          },
+          {
+            "id": "yellow-stone-wall",
+            "efficiency": 0.5
+          },
+          {
+            "id": "red-stone-wall",
+            "efficiency": 0.5
+          },
+          {
+            "id": "beryllic-stone-wall",
+            "efficiency": 0.2
+          },
+          {
+            "id": "carbon-wall",
+            "efficiency": -0.3
+          },
+          {
+            "id": "ferric-stone-wall",
+            "efficiency": -0.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "silicon-arc-furnace",
+      "name": "Silicon arc furnace",
+      "power": 300,
+      "image": {
+        "row": 10,
+        "col": 0
+      }
+    },
+    {
+      "id": "electrolyzer",
+      "name": "Electrolyzer",
+      "power": 60,
+      "image": {
+        "row": 11,
+        "col": 1
+      }
+    },
+    {
+      "id": "atmospheric-concentrator",
+      "name": "Atmospheric concentrator",
+      "power": 120,
+      "image": {
+        "row": 11,
+        "col": 6
+      }
+    },
+    {
+      "id": "oxidation-chamber",
+      "name": "Oxidation chamber",
+      "power": 30,
+      "image": {
+        "row": 11,
+        "col": 2
+      }
+    },
+    {
+      "id": "carbide-crucible",
+      "name": "Carbide crucible",
+      "power": 120,
+      "image": {
+        "row": 10,
+        "col": 1
+      }
+    },
+    {
+      "id": "surge-crucible",
+      "name": "Surge crucible",
+      "power": 90,
+      "image": {
+        "row": 10,
+        "col": 11
+      }
+    },
+    {
+      "id": "cyanogen-synthesizer",
+      "name": "Cyanogen synthesizer",
+      "power": 120,
+      "image": {
+        "row": 11,
+        "col": 5
+      }
+    },
+    {
+      "id": "phase-synthesizer",
+      "name": "Phase synthesizer",
+      "power": 480,
+      "image": {
+        "row": 10,
+        "col": 13
+      }
+    },
+    {
+      "id": "reinforced-pump",
+      "name": "Reinforced pump",
+      "image": {
+        "row": 11,
+        "col": 3
+      }
+    },
+    {
+      "id": "vent-condenser",
+      "name": "Vent condenser",
+      "power": 30,
+      "image": {
+        "row": 11,
+        "col": 0
+      }
+    },
+    {
+      "id": "turbine-condenser",
+      "name": "Turbine condenser",
+      "image": {
+        "row": 13,
+        "col": 13
+      }
+    },
+    {
+      "id": "pyrolysis-generator",
+      "name": "Pyrolysis generator",
+      "image": {
+        "row": 13,
+        "col": 14
+      }
+    },
+    {
+      "id": "neoplasia-reactor",
+      "name": "Neoplasia reactor",
+      "image": {
+        "row": 10,
+        "col": 14
+      }
+    },
+    {
+      "id": "chemical-combustion-chamber",
+      "name": "Chemical combustion chamber",
+      "image": {
+        "row": 2,
+        "col": 11
+      }
+    },
+    {
+      "id": "flux-reactor",
+      "name": "Flux reactor",
+      "image": {
+        "row": 2,
+        "col": 12
+      }
+    },
+    {
+      "id": "electric-heater",
+      "name": "Electric heater",
+      "power": 100,
+      "image": {
+        "row": 10,
+        "col": 2
+      }
+    },
+    {
+      "id": "slag-heater",
+      "name": "Slag heater",
+      "image": {
+        "row": 10,
+        "col": 7
+      }
+    },
+    {
+      "id": "phase-heater",
+      "name": "Phase heater",
+      "image": {
+        "row": 10,
+        "col": 12
+      }
+    }
+  ],
   "beacons": [],
-  "tiles": [],
-  "recipes": []
+  "tiles": [
+    {
+      "id": "other",
+      "name": "Other",
+      "image": {
+        "row": 0,
+        "col": 0
+      }
+    },
+    {
+      "id": "stone-wall",
+      "name": "Stone wall",
+      "image": {
+        "row": 5,
+        "col": 10
+      }
+    },
+    {
+      "id": "regolith-wall",
+      "name": "Regolith wall",
+      "image": {
+        "row": 5,
+        "col": 11
+      }
+    },
+    {
+      "id": "rhyolite-wall",
+      "name": "Rhyolite wall",
+      "image": {
+        "row": 5,
+        "col": 12
+      }
+    },
+    {
+      "id": "dune-wall",
+      "name": "Dune wall",
+      "image": {
+        "row": 5,
+        "col": 13
+      }
+    },
+    {
+      "id": "sand-wall",
+      "name": "Sand wall",
+      "image": {
+        "row": 5,
+        "col": 14
+      }
+    },
+    {
+      "id": "yellow-stone-wall",
+      "name": "Yellow stone wall",
+      "image": {
+        "row": 6,
+        "col": 10
+      }
+    },
+    {
+      "id": "red-stone-wall",
+      "name": "Red stone wall",
+      "image": {
+        "row": 6,
+        "col": 11
+      }
+    },
+    {
+      "id": "beryllic-stone-wall",
+      "name": "Beryllic stone wall",
+      "image": {
+        "row": 6,
+        "col": 12
+      }
+    },
+    {
+      "id": "carbon-wall",
+      "name": "Carbon wall",
+      "image": {
+        "row": 6,
+        "col": 13
+      }
+    },
+    {
+      "id": "ferric-stone-wall",
+      "name": "Ferric stone wall",
+      "image": {
+        "row": 6,
+        "col": 14
+      }
+    }
+  ],
+  "recipes": [
+    {
+      "id": "beryllium",
+      "buildings": [
+        {
+          "id": "plasma-bore",
+          "output": [
+            {
+              "id": "beryllium",
+              "perSec": 0.75
+            }
+          ]
+        },
+        {
+          "id": "large-plasma-bore",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 0.5
+            }
+          ],
+          "output": [
+            {
+              "id": "beryllium",
+              "perSec": 1.8
+            }
+          ]
+        },
+        {
+          "id": "impact-drill",
+          "input": [
+            {
+              "id": "water",
+              "perSec": 10
+            }
+          ],
+          "output": [
+            {
+              "id": "beryllium",
+              "perSec": "8/3"
+            }
+          ]
+        },
+        {
+          "id": "eruption-drill",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 4
+            }
+          ],
+          "output": [
+            {
+              "id": "beryllium",
+              "perSec": "32/3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphite",
+      "buildings": [
+        {
+          "id": "plasma-bore",
+          "output": [
+            {
+              "id": "graphite",
+              "perSec": 0.75
+            }
+          ]
+        },
+        {
+          "id": "large-plasma-bore",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 0.5
+            }
+          ],
+          "output": [
+            {
+              "id": "graphite",
+              "perSec": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tungsten",
+      "buildings": [
+        {
+          "id": "large-plasma-bore",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 0.5
+            }
+          ],
+          "output": [
+            {
+              "id": "tungsten",
+              "perSec": 1.8
+            }
+          ]
+        },
+        {
+          "id": "impact-drill",
+          "input": [
+            {
+              "id": "water",
+              "perSec": 10
+            }
+          ],
+          "output": [
+            {
+              "id": "tungsten",
+              "perSec": "4/3"
+            }
+          ]
+        },
+        {
+          "id": "eruption-drill",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 4
+            }
+          ],
+          "output": [
+            {
+              "id": "tungsten",
+              "perSec": "16/3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thorium",
+      "buildings": [
+        {
+          "id": "large-plasma-bore",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 0.5
+            }
+          ],
+          "output": [
+            {
+              "id": "thorium",
+              "perSec": 1.8
+            }
+          ]
+        },
+        {
+          "id": "eruption-drill",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 4
+            }
+          ],
+          "output": [
+            {
+              "id": "thorium",
+              "perSec": "16/3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sand",
+      "buildings": [
+        {
+          "id": "cliff-crusher",
+          "output": [
+            {
+              "id": "sand",
+              "perSec": "12/11"
+            }
+          ]
+        },
+        {
+          "id": "large-cliff-crusher",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 1
+            }
+          ],
+          "output": [
+            {
+              "id": "sand",
+              "perSec": 3.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "silicon",
+      "buildings": [
+        {
+          "id": "silicon-arc-furnace",
+          "input": [
+            {
+              "id": "graphite",
+              "perSec": 1.2
+            },
+            {
+              "id": "sand",
+              "perSec": 4.8
+            }
+          ],
+          "output": [
+            {
+              "id": "silicon",
+              "perSec": 4.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oxide",
+      "buildings": [
+        {
+          "id": "oxidation-chamber",
+          "input": [
+            {
+              "id": "beryllium",
+              "perSec": 0.5
+            },
+            {
+              "id": "ozone",
+              "perSec": 2
+            }
+          ],
+          "output": [
+            {
+              "id": "oxide",
+              "perSec": 0.5
+            },
+            {
+              "id": "heat",
+              "perSec": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carbide",
+      "buildings": [
+        {
+          "id": "carbide-crucible",
+          "input": [
+            {
+              "id": "tungsten",
+              "perSec": "32/9"
+            },
+            {
+              "id": "graphite",
+              "perSec": "16/3"
+            },
+            {
+              "id": "heat",
+              "perSec": 40
+            }
+          ],
+          "output": [
+            {
+              "id": "carbide",
+              "perSec": "16/9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "surge-alloy",
+      "buildings": [
+        {
+          "id": "surge-crucible",
+          "input": [
+            {
+              "id": "silicon",
+              "perSec": 4
+            },
+            {
+              "id": "slag",
+              "perSec": 160
+            },
+            {
+              "id": "heat",
+              "perSec": 40
+            }
+          ],
+          "output": [
+            {
+              "id": "surge-alloy",
+              "perSec": "4/3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase-fabric",
+      "buildings": [
+        {
+          "id": "phase-synthesizer",
+          "input": [
+            {
+              "id": "thorium",
+              "perSec": 4
+            },
+            {
+              "id": "sand",
+              "perSec": 12
+            },
+            {
+              "id": "ozone",
+              "perSec": 8
+            },
+            {
+              "id": "heat",
+              "perSec": 32
+            }
+          ],
+          "output": [
+            {
+              "id": "phase-fabric",
+              "perSec": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "water",
+      "buildings": [
+        {
+          "id": "vent-condenser",
+          "output": [
+            {
+              "id": "water",
+              "perSec": 30
+            }
+          ]
+        },
+        {
+          "id": "reinforced-pump",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 1.5
+            }
+          ],
+          "output": [
+            {
+              "id": "water",
+              "perSec": 80
+            }
+          ]
+        },
+        {
+          "id": "turbine-condenser",
+          "output": [
+            {
+              "id": "power",
+              "perSec": 180
+            },
+            {
+              "id": "water",
+              "perSec": 5
+            }
+          ]
+        },
+        {
+          "id": "pyrolysis-generator",
+          "input": [
+            {
+              "id": "slag",
+              "perSec": 20
+            },
+            {
+              "id": "arkycite",
+              "perSec": 40
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 1400
+            },
+            {
+              "id": "water",
+              "perSec": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "slag",
+      "buildings": [
+        {
+          "id": "reinforced-pump",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 1.5
+            }
+          ],
+          "output": [
+            {
+              "id": "slag",
+              "perSec": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arkycite",
+      "buildings": [
+        {
+          "id": "reinforced-pump",
+          "input": [
+            {
+              "id": "hydrogen",
+              "perSec": 1.5
+            }
+          ],
+          "output": [
+            {
+              "id": "arkycite",
+              "perSec": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ozone",
+      "buildings": [
+        {
+          "id": "electrolyzer",
+          "input": [
+            {
+              "id": "water",
+              "perSec": 10
+            }
+          ],
+          "output": [
+            {
+              "id": "ozone",
+              "perSec": 4
+            },
+            {
+              "id": "hydrogen",
+              "perSec": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hydrogen",
+      "buildings": [
+        {
+          "id": "electrolyzer",
+          "input": [
+            {
+              "id": "water",
+              "perSec": 10
+            }
+          ],
+          "output": [
+            {
+              "id": "ozone",
+              "perSec": 4
+            },
+            {
+              "id": "hydrogen",
+              "perSec": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nitrogen",
+      "buildings": [
+        {
+          "id": "atmospheric-concentrator",
+          "input": [
+            {
+              "id": "heat",
+              "perSec": 24
+            }
+          ],
+          "output": [
+            {
+              "id": "nitrogen",
+              "perSec": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cyanogen",
+      "buildings": [
+        {
+          "id": "cyanogen-synthesizer",
+          "input": [
+            {
+              "id": "graphite",
+              "perSec": 3
+            },
+            {
+              "id": "arkycite",
+              "perSec": 160
+            },
+            {
+              "id": "heat",
+              "perSec": 20
+            }
+          ],
+          "output": [
+            {
+              "id": "cyanogen",
+              "perSec": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "neoplasm",
+      "buildings": [
+        {
+          "id": "neoplasia-reactor",
+          "input": [
+            {
+              "id": "arkycite",
+              "perSec": 80
+            },
+            {
+              "id": "water",
+              "perSec": 10
+            },
+            {
+              "id": "phase-fabric",
+              "perSec": "1/3"
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 8400
+            },
+            {
+              "id": "neoplasm",
+              "perSec": 20
+            },
+            {
+              "id": "heat",
+              "perSec": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "buildings": [
+        {
+          "id": "turbine-condenser",
+          "output": [
+            {
+              "id": "power",
+              "perSec": 180
+            },
+            {
+              "id": "water",
+              "perSec": 5
+            }
+          ]
+        },
+        {
+          "id": "chemical-combustion-chamber",
+          "input": [
+            {
+              "id": "ozone",
+              "perSec": 2
+            },
+            {
+              "id": "arkycite",
+              "perSec": 40
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 550
+            }
+          ]
+        },
+        {
+          "id": "pyrolysis-generator",
+          "input": [
+            {
+              "id": "slag",
+              "perSec": 20
+            },
+            {
+              "id": "arkycite",
+              "perSec": 40
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 1400
+            },
+            {
+              "id": "water",
+              "perSec": 20
+            }
+          ]
+        },
+        {
+          "id": "flux-reactor",
+          "input": [
+            {
+              "id": "cyanogen",
+              "perSec": 9
+            },
+            {
+              "id": "heat",
+              "perSec": 150
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 18000
+            }
+          ]
+        },
+        {
+          "id": "neoplasia-reactor",
+          "input": [
+            {
+              "id": "arkycite",
+              "perSec": 80
+            },
+            {
+              "id": "water",
+              "perSec": 10
+            },
+            {
+              "id": "phase-fabric",
+              "perSec": "1/3"
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 8400
+            },
+            {
+              "id": "neoplasm",
+              "perSec": 20
+            },
+            {
+              "id": "heat",
+              "perSec": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heat",
+      "buildings": [
+        {
+          "id": "electric-heater",
+          "output": [
+            {
+              "id": "heat",
+              "perSec": 3
+            }
+          ]
+        },
+        {
+          "id": "slag-heater",
+          "input": [
+            {
+              "id": "slag",
+              "perSec": 40
+            }
+          ],
+          "output": [
+            {
+              "id": "heat",
+              "perSec": 8
+            }
+          ]
+        },
+        {
+          "id": "phase-heater",
+          "input": [
+            {
+              "id": "phase-fabric",
+              "perSec": 0.125
+            }
+          ],
+          "output": [
+            {
+              "id": "heat",
+              "perSec": 15
+            }
+          ]
+        },
+        {
+          "id": "oxidation-chamber",
+          "input": [
+            {
+              "id": "beryllium",
+              "perSec": 0.5
+            },
+            {
+              "id": "ozone",
+              "perSec": 2
+            }
+          ],
+          "output": [
+            {
+              "id": "oxide",
+              "perSec": 0.5
+            },
+            {
+              "id": "heat",
+              "perSec": 5
+            }
+          ]
+        },
+        {
+          "id": "neoplasia-reactor",
+          "input": [
+            {
+              "id": "arkycite",
+              "perSec": 80
+            },
+            {
+              "id": "water",
+              "perSec": 10
+            },
+            {
+              "id": "phase-fabric",
+              "perSec": "1/3"
+            }
+          ],
+          "output": [
+            {
+              "id": "power",
+              "perSec": 8400
+            },
+            {
+              "id": "neoplasm",
+              "perSec": 20
+            },
+            {
+              "id": "heat",
+              "perSec": 60
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

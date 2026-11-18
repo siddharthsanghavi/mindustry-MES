@@ -203,6 +203,8 @@ function CustomNode({ id, data }: NodeProps & BoxlineNodeType) {
           <span>{t("Output")}</span>
         ) : data.label === "surplus" ? (
           <span>{t("Surplus")}</span>
+        ) : data.label === "power grid" ? (
+          <span>{t("Power grid")}</span>
         ) : (
           <div className="flex items-center gap-1.5">
             <SpriteImage row={data.image.row} col={data.image.col} />
